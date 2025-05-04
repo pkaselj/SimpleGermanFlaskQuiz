@@ -1,5 +1,6 @@
 
 from flask import Flask, render_template
+import logging
 from data import Displayable
 import random
 from globals import GlobalContext
@@ -7,6 +8,7 @@ from logic import LoadAppConfiguration, LoadModuleData
 
 GLOBALS = GlobalContext()
 app = Flask(__name__)
+app.logger.setLevel(logging.INFO)
 
 LoadAppConfiguration(app, GLOBALS)
 LoadModuleData(app, GLOBALS)
@@ -54,4 +56,6 @@ def croatian():
     return render_template('quiz_page.html.jinja', quiz_data=display_data)
 
 if __name__ == '__main__':
-    app.run(debug=True) 
+    app.run(debug=True)
+else:
+    app
