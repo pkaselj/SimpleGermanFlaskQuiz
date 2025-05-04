@@ -24,7 +24,7 @@ class Parseable:
 class DictionaryItem(Displayable, Parseable):
     pass
 
-class NounItem(DictionaryItem):
+class VerbItem(DictionaryItem):
     _german : str
     _croatian : str
 
@@ -49,7 +49,7 @@ class NounItem(DictionaryItem):
     def GetSolution(self):
         return self._german.lower() + '\n\n' + self._croatian.upper()
 
-class VerbItem(DictionaryItem):
+class NounItem(DictionaryItem):
     pass
 
 class AdverbAdjectiveItem(DictionaryItem):
@@ -58,7 +58,7 @@ class AdverbAdjectiveItem(DictionaryItem):
 class PhraseItem(DictionaryItem):
     pass
 
-_Parsers : Tuple[type[Parseable]] = ( NounItem, )
+_Parsers : Tuple[type[Parseable]] = ( VerbItem, )
 
 def _GetParser(id : str) -> Union[DictionaryItem | None]:
     for parser_cls in _Parsers:
