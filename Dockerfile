@@ -12,5 +12,5 @@ COPY ./data/ data/
 ENV FLASK_APP=app/app.py
 ENV FLASK_QUIZ_DATA_DIR=/simple_german_quiz/data
 
-EXPOSE 5000
-ENTRYPOINT gunicorn --access-logfile=- --chdir /simple_german_quiz/app -b localhost:5000 -w 4 app:app
+EXPOSE 80
+ENTRYPOINT gunicorn --access-logfile=- --chdir /simple_german_quiz/app -b localhost:80 -w 4 app:app
