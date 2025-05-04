@@ -13,8 +13,17 @@ LoadModuleData(app, GLOBALS)
 
 @app.route('/')
 def hello():
-    # app.logger.info(f'QUIZ_DATA_DIR = %s', app.config["QUIZ_DATA_DIR"])
-    return 'Hello World!'
+    choices = [
+        {
+            'text' : 'Cards - German Questions',
+            'destination': '/german'
+        },
+        {
+            'text' : 'Cards - Croatian Questions',
+            'destination': '/croatian'
+        },
+    ]
+    return render_template('home_page.html.jinja', choices=choices)
 
 @app.route('/german')
 def german():

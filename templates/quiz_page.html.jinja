@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache"> <!-- Force no cache -->
 <style>
 .accordion {
   background-color: #eee;
@@ -26,6 +27,23 @@
   background-color: white;
   overflow: hidden;
 }
+
+.next-button {
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: #28a745; /* Green color */
+  color: white;
+  border: none;
+  border-radius: 3px;
+  font-size: large;
+  margin: 20px auto;
+}
+
+.next-button:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
 </style>
 </head>
 <body>
@@ -38,6 +56,8 @@
   <p>{{ item.answer }}</p>
 </div>
 {% endfor %}
+
+<button onclick="forceRefresh()" class="next-button">Continue</button>
 
 <script>
 var acc = document.getElementsByClassName("accordion");
@@ -54,6 +74,14 @@ for (i = 0; i < acc.length; i++) {
     }
   });
 }
+
+// Force browser to circumvent the cache because the request url is not the same anymore (refresh query key-value pair)
+function forceRefresh() {
+  let url = new URL(window.location.href);
+  url.searchParams.set("refresh", new Date().getTime()); // Updates the "refresh" parameter
+  window.location.replace(url.href); // Reloads with the updated query parameter
+}
+
 </script>
 
 </body>
