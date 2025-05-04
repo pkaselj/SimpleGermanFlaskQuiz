@@ -47,18 +47,123 @@ class VerbItem(DictionaryItem):
         return self._croatian
     
     def GetSolution(self):
-        return self._german.lower() + '\n\n' + self._croatian.upper()
+        return self._german.lower() + ' - ' + self._croatian.upper()
 
 class NounItem(DictionaryItem):
-    pass
+    _german_singular : str
+    _german_article : str
+    _german_plural : str
+    _croatian : str
+
+    @classmethod
+    def GetIdentifier(cls):
+        return 'noun'
+    
+    def Parse(self, data : Tuple[str]) -> bool:
+        try:
+            self._german_article = data[1]
+            self._german_singular = data[2]
+            self._german_plural = data[3]
+            self._croatian = data[4]
+        except Exception as ex:
+            return False
+        return True
+    
+    def GetGerman(self):
+        return self._german_singular.capitalize()
+    
+    def GetCroatian(self):
+        return self._croatian
+    
+    def GetSolution(self):
+        _str = f'{self._german_article} {self._german_singular.capitalize()} - '
+        if len(self._german_plural) > 0 :
+            _str += f'die {self._german_plural.capitalize()} - '
+        _str += f'{self._croatian.upper()}'
+        return _str
 
 class AdverbAdjectiveItem(DictionaryItem):
-    pass
+    _german : str
+    _croatian : str
+
+    @classmethod
+    def GetIdentifier(cls):
+        return 'ad'
+    
+    def Parse(self, data : Tuple[str]) -> bool:
+        try:
+            self._german = data[1]
+            self._croatian = data[2]
+        except Exception as ex:
+            return False
+        return True
+    
+    def GetGerman(self):
+        return self._german
+    
+    def GetCroatian(self):
+        return self._croatian
+    
+    def GetSolution(self):
+        return self._german.lower() + ' - ' + self._croatian.upper()
 
 class PhraseItem(DictionaryItem):
-    pass
+    _german : str
+    _croatian : str
 
-_Parsers : Tuple[type[Parseable]] = ( VerbItem, )
+    @classmethod
+    def GetIdentifier(cls):
+        return 'phrase'
+    
+    def Parse(self, data : Tuple[str]) -> bool:
+        try:
+            self._german = data[1]
+            self._croatian = data[2]
+        except Exception as ex:
+            return False
+        return True
+    
+    def GetGerman(self):
+        return self._german
+    
+    def GetCroatian(self):
+        return self._croatian
+    
+    def GetSolution(self):
+        return self._german.lower() + ' - ' + self._croatian.upper()
+    
+class PrononunItem(DictionaryItem):
+    _german : str
+    _croatian : str
+
+    @classmethod
+    def GetIdentifier(cls):
+        return 'pron'
+    
+    def Parse(self, data : Tuple[str]) -> bool:
+        try:
+            self._german = data[1]
+            self._croatian = data[2]
+        except Exception as ex:
+            return False
+        return True
+    
+    def GetGerman(self):
+        return self._german
+    
+    def GetCroatian(self):
+        return self._croatian
+    
+    def GetSolution(self):
+        return self._german.lower() + ' - ' + self._croatian.upper()
+
+_Parsers : Tuple[type[Parseable]] = (
+    VerbItem,
+    NounItem,
+    PhraseItem,
+    AdverbAdjectiveItem,
+    PrononunItem
+)
 
 def _GetParser(id : str) -> Union[DictionaryItem | None]:
     for parser_cls in _Parsers:
