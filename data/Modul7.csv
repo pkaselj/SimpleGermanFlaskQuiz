@@ -8,14 +8,14 @@ noun,das,Urteil,Urteile,presuda
 noun,das,Volk,Völker,narod
 verb,beschließen,odluciti,,
 verb,vererben,ostaviti kao naslijede,,
-noun,vermitteln,posredovati,,
-noun,belegen,zauzeti,,
+verb,vermitteln,posredovati,,
+verb,belegen,zauzeti,,
 ad,lebendig,ziv;zivahan,,
 noun,der,Organismus,Organismen,organizam
 verb,verdrängen,potisnuti,,
 verb,verschwinden,nestati,,
 verb,erkennen,prepoznati,,
-noun,das,Mittelalter,srednji vijek,
+noun,das,Mittelalter,,srednji vijek
 noun,der,Klang,Klänge,zvuk
 verb,ersetzen,zamijeniti,,
 ad,ungekehrt,obrnutno,,
@@ -64,7 +64,7 @@ verb,bedecken,pokriti;prekriti,,
 verb,begreifen,shvatiti,,
 noun,der,Geruch,Gerüche,miris
 noun,die,Pfeife,Pfeifen,lula;zvizdaljka
-noun,warnen,upozoriti,,
+verb,warnen,upozoriti,,
 verb,weg|kommen,pobjeci,,
 verb,rauschen,sumiti,,
 ad,ewig,vjecno,,
@@ -75,7 +75,7 @@ ad,fürsorglich,zabrinut,,
 verb,auf|treten,nastupati,,
 noun,der,Gürtel,Gürtel,pojas;remen
 verb,nagen,glodati,,
-noun,der,Groll,ljutnja;bijes,
+noun,der,Groll,,ljutnja;bijes
 noun,die,Wende,Wenden,promjena;obrat;okret
 ad,ehemalig,nekadasnji;bivsi,,
 noun,der,Einfall,Einfälle,dosjetka;ideja
