@@ -20,13 +20,16 @@ jobs:
          registry: ghcr.io
          username: ${{ github.actor }}
          password: ${{ secrets.GITHUB_TOKEN }}
+     - id: lowercase_repo
+       name: Change String Case
+       uses: ASzc/change-string-case-action@v6
      - name: Build and push Docker image
        id: push
        uses: docker/build-push-action@v6.5.0
        with:
          context: .
          push: true
-         tags: ghcr.io/${{ github.repository }}:latest
+         tags: ghcr.io/${{ steps.lowercase_repo.outputs.lowercase }}:latest
      - name: Deploy the app
        uses: digitalocean/app_action/deploy@v2
        env:
