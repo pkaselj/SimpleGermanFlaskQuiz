@@ -23,6 +23,8 @@ jobs:
      - id: lowercase_repo
        name: Change String Case
        uses: ASzc/change-string-case-action@v6
+       with:
+          string: ${{ github.repository }}
      - name: Build and push Docker image
        id: push
        uses: docker/build-push-action@v6.5.0
