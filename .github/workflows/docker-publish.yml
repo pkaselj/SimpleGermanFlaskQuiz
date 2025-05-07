@@ -38,6 +38,5 @@ jobs:
          SAMPLE_DIGEST: ${{ steps.push.outputs.digest }}
        with:
          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-         project_id: ${{ vars.DIGITALOCEAN_PROJECT }}
          print_build_logs: true
          print_deploy_logs: true
